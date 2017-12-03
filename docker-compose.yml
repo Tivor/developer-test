@@ -1,0 +1,66 @@
+version: '2'
+volumes:
+  mysql_data:
+ 
+services:
+# web
+#  web:
+#    image: integritas/ui
+#    hostname: web
+#    expose:
+#    - "80"
+#    ports:
+#    - "80:80"
+#    depends_on:
+#    - api
+# Web
+  api:
+    image: integritas/api
+    hostname: api
+    expose:
+    - "8090"
+    ports:
+    - "8090:8090"
+    links:
+    - "shopping"
+    - "activemq"
+#    - "payment"
+    - "db-mysql"
+    depends_on:
+    - shopping
+    - activemq
+#    - payment
+    - db-mysql
+# Backend
+  shopping:
+    image: integritas/shopping
+    hostname: shopping
+    links:
+    - "db-mysql"
+    - "activemq"
+    depends_on:
+    - activemq
+    - db-mysql
+  activemq:
+    image: rmohr/activemq:latest
+    container_name: activemq
+    ports:
+      - 8161:8161
+      - 61616:61616
+#  payment:
+#    image: integritas/payment
+#    hostname: payment
+#    links:
+#    - "db-mysql"
+#    depends_on:
+#    - db-mysql
+  db-mysql:
+    image: mysql
+    hostname: db-mysql
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_DATABASE: integritas
+      MYSQL_ROOT_PASSWORD: root
+    ports:
+    - "3306:3306"

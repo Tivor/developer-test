@@ -7,7 +7,7 @@ Para executar
 
 ```sh
 ## build modules
-docker build -t ui/static-web AngularDocker/
+docker build -t integritas/ui ui/
 
 cd common
 mvn install
@@ -28,7 +28,7 @@ cd..
 ##Run instances
 docker-compose up
 
-No browser: {{docker-ip}}:80
+No browser: {{docker-ip}}:80 (Apache, change port at ui/httpd.conf)
 
 --- | ---
 {{docker-ip}}:3306 | Mysql (root/root) - Schema integritas.
