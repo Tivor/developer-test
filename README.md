@@ -1,9 +1,9 @@
 # developer-test
 Simple application docker+spring-boot+angularjs+activemq+mysql
 
-Projeto Teste
+Project Test
 
-Para executar
+TO RUN (WARNING. WAIT-FOR-IT MYSQL NOT CONFIGURED)
 
 ```sh
 ## build modules

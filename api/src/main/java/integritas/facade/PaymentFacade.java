@@ -26,7 +26,7 @@ public class PaymentFacade {
         jmsMessagingTemplate.convertAndSend(this.paymentQ, paymentInfo);
     }
 
-    public boolean isValid(PaymentInfo paymentInfo) {
+    protected boolean isValid(PaymentInfo paymentInfo) {
         return StringUtils.hasText(paymentInfo.getExpiration()) &&
                 StringUtils.hasText(paymentInfo.getName()) &&
                 StringUtils.hasText(paymentInfo.getNumber());
