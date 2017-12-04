@@ -10,7 +10,7 @@ Para executar
 docker build -t integritas/ui ui/
 
 cd common
-mvn install
+mvn clean install
 cd..
 
 cd api

@@ -3,17 +3,17 @@ volumes:
   mysql_data:
  
 services:
-# web
-#  web:
-#    image: integritas/ui
-#    hostname: web
-#    expose:
-#    - "80"
-#    ports:
-#    - "80:80"
-#    depends_on:
-#    - api
-# Web
+# angular-js
+  web:
+    image: integritas/ui
+    hostname: web
+    expose:
+    - "80"
+    ports:
+    - "80:80"
+    depends_on:
+    - api
+# api-rest
   api:
     image: integritas/api
     hostname: api
@@ -23,37 +23,40 @@ services:
     - "8090:8090"
     links:
     - "shopping"
+    - "payment"
     - "activemq"
-#    - "payment"
     - "db-mysql"
     depends_on:
     - shopping
+    - payment
     - activemq
-#    - payment
     - db-mysql
-# Backend
+# Microservices
   shopping:
     image: integritas/shopping
     hostname: shopping
     links:
-    - "db-mysql"
     - "activemq"
+    - "db-mysql"
     depends_on:
     - activemq
     - db-mysql
+  payment:
+    image: integritas/payment
+    hostname: payment
+    links:
+    - "db-mysql"
+    - "activemq"
+    depends_on:
+    - db-mysql
+    - activemq
   activemq:
     image: rmohr/activemq:latest
     container_name: activemq
     ports:
-      - 8161:8161
-      - 61616:61616
-#  payment:
-#    image: integritas/payment
-#    hostname: payment
-#    links:
-#    - "db-mysql"
-#    depends_on:
-#    - db-mysql
+    - 8161:8161
+    - 61616:61616
+# Mysql
   db-mysql:
     image: mysql
     hostname: db-mysql
