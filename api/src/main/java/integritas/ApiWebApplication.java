@@ -9,6 +9,9 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jms.annotation.EnableJms;
+import org.springframework.jms.support.converter.MappingJackson2MessageConverter;
+import org.springframework.jms.support.converter.MessageConverter;
+import org.springframework.jms.support.converter.MessageType;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -47,10 +50,14 @@ public class ApiWebApplication {
 	    return bean;
 	}
 
-	@Bean
-	public Queue queue() {
+	@Bean(name="shoppingQ")
+	public Queue shoppingQ() {
 		return new ActiveMQQueue("integritas.add-cart");
 	}
-	
-	
+
+	@Bean(name="paymentQ")
+	public Queue paymentQ() {
+		return new ActiveMQQueue("integritas.payment-info");
+	}
+
 }
