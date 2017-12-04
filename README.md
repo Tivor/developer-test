@@ -3,7 +3,7 @@ Simple application docker+spring-boot+angularjs+activemq+mysql
 
 Project Test
 
-TO RUN (WARNING!!! WAIT-FOR-IT MYSQL NOT CONFIGURED)
+# RUNNING (WARNING!!! WAIT-FOR-IT MYSQL NOT CONFIGURED)
 
 ```sh
 ## build modules
@@ -32,4 +32,4 @@ No browser: {{docker-ip}}:80 (Apache, change port at ui/httpd.conf)
 
 --- | ---
 {{docker-ip}}:3306 | Mysql (root/root) - Schema integritas.
-Use [dml file](insert_products.sql) to insert examples.
+# Sample Data in insert_products.sql.
