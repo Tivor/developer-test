@@ -3,8 +3,8 @@ angular.module('app.common', [])
 .factory('Payment',['$http', function ($http){
 
     var returned= null;
-    var getResponse = function(id, callBack){
-        $http.put('http://localhost:8090/payment/buy/' + id).
+    var getResponse = function(paymentInfo, callBack){
+        $http.post('http://localhost:8090/payment/buy', paymentInfo).
             then(function(respond){
                 callBack(true);
             }, function(respond) {
@@ -14,7 +14,7 @@ angular.module('app.common', [])
     }
 
     return {
-        addProduct: getResponse
+        buy: getResponse
     }
 
 }])
