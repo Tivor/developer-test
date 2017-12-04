@@ -13,9 +13,9 @@ import org.springframework.jms.annotation.EnableJms;
 @ComponentScan
 @EnableAutoConfiguration
 @EnableJms
-public class ShoppingService {
+public class PaymentService {
 	public static void main(String[] args) {
 		System.setProperty("spring.devtools.restart.enabled", "true");
-		SpringApplication.run(ShoppingService.class, args);
+		SpringApplication.run(PaymentService.class, args);
 	}
 }
