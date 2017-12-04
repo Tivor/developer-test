@@ -2,10 +2,21 @@
   <div class="row">
     <div class="col-md-12">
       <h1>Products</h1>
+      <div class="alert alert-warning" role="alert" ng-show="message">{{message}}</div>
+      <button class="btn btn-info" type="button" ng-click="buy()">
+        Go to payment
+      </button>
     </div>
   </div>
   <div class="row">
     <div class="col-md-12">
-      <div ng-repeat="prod in allProducts">{{prod.name}}</div>
+
+      <div ng-repeat="prod in allProducts">
+        <button class="btn btn-primary" type="button" ng-click="add(prod.id)">
+          {{prod.name}} <span class="badge">${{prod.price | number : 2}}</span>
+        </button>
+      </div>
     </div>
+
+    <br/>
   </div>

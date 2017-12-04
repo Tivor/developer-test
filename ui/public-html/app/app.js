@@ -12,9 +12,14 @@
 
         .state('pay', {
             url: '/pay',
-            templateUrl: 'app/payment/pay.view.html',
+            templateUrl: 'app/pay/pay.view.html',
             controller: 'paymentController'
+        })
+
+        .state('success', {
+            url: '/success',
+            templateUrl: 'app/success.view.html'
         });
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('/cart');
 
 });
